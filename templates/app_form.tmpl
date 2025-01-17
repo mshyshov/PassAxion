@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PassAxion Admin Panel - {{ .title }}</title>
+</head>
+
+<body>
+
+    <nav>
+        <a href="/">Main</a>
+        <a href="/apps">Applications</a>
+        <a href="/users">Users</a>
+    </nav>
+
+    <div style="working-area">
+        <div class="working-area-title">
+            <h1 class="working-area-title-text">{{ .title }}</h1>
+        </div>
+        <div class="working-area-body">
+            <form action="/apps/{{ .action }}" method="post">
+                <label for="app_name">Name</label>
+                <input type="text" name="name" id="app_name" value="{{ .app_name_value }}">
+                <label for="app_description">Description</label>
+                <input type="text" name="description" id="app_description" value="{{ .app_description_value }}">
+                <label for="app_uri">URI</label>
+                <input type="url" name="uri" id="app_uri" value="{{ .app_uri_value }}">
+                <input type="submit" value="Save">
+            </form>
+        </div>
+    </div>
+
+</body>
+
+</html>

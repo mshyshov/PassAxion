@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PassAxion Admin Panel - {{ .title }}</title>
+</head>
+
+<body>
+
+    <nav>
+        <a href="/">Main</a>
+        <a href="/apps">Applications</a>
+        <a href="/users">Users</a>
+    </nav>
+
+    <div class="controls">
+    {{if eq .title "Applications"}}
+        <a href="/apps/new">Create Application</a>
+    {{end}}
+    {{if eq .title "Users"}}
+        <a href="/users/new">Create User</a>
+    {{end}}
+    </div>
+
+    <div style="working-area">
+        <div class="working-area-title">
+            <h1 class="working-area-title-text">{{ .title }}</h1>
+        </div>
+        <div class="working-area-body">
+        <table>
+            <thead>
+                {{if eq .title "Applications"}}
+                <th>ID</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>URI</th>
+                {{else if eq .title "Users"}}
+                <th>ID</th>
+                <th>Name</th>
+                <th>Is Admin</th>
+                <th>Password Hash</th>
+                {{end}}
+            </thead>
+            <tbody>
+                {{if eq .title "Applications"}}
+                {{range .appsList}}
+                <td>{{ .ID }}</td>
+                <td>{{ .Name }}</td>
+                <td>{{ .Description }}</td>
+                <td>{{ .URI }}</td>
+                {{end}}
+                {{else if eq .title "Users"}}
+                {{range .usersList}}
+
+                {{end}}
+                {{end}}
+            </tbody>
+        </table>
+
+        </div>
+    </div>
+
+
+
+
+</body>
+
+</html>
